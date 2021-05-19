@@ -16,6 +16,8 @@
 	<properties>
 		<java.version>11</java.version>
 		<swagger.version>2.9.2</swagger.version>
+		<jackson.version>2.10.0.pr3</jackson.version>
+		<hibernate.validator.version>6.1.5.Final</hibernate.validator.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -44,6 +46,18 @@
 			<version>${swagger.version}</version>
 		</dependency>
 
+		<!-- https://mvnrepository.com/artifact/com.fasterxml.jackson.dataformat/jackson-dataformat-xml -->
+		<dependency>
+			<groupId>com.fasterxml.jackson.dataformat</groupId>
+			<artifactId>jackson-dataformat-xml</artifactId>
+			<version>2.10.0.pr3</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hibernate.validator.version}</version>
+		</dependency>
 
 	</dependencies>
 

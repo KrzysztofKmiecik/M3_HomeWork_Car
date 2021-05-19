@@ -18,6 +18,9 @@ Napisz REST API dla listy pojazdów.
 
 ## Dla ambitnych:
 
-- [ ] rozbuduj aplikacje o możliwość zwracania danych w postaci XML
+- [x] rozbuduj aplikacje o możliwość zwracania danych w postaci XML
 - [x] dodaj obsługę Swgger UI
-- [x] zaimplementuj HATEOAS
+- [ ] zaimplementuj HATEOAS
+
+## Dodatkowo
+- [x] walidacja danych wejściowych
