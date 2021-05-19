@@ -1,0 +1,15 @@
+POST/PUT
+  {
+        "id": 5,
+            "mark": "FIAT",
+            "model": "ggggggg",
+            "color": "WHITE"
+  }
+
+
+
+PATCH
+
+        {      "color": "RED"
+
+        }
