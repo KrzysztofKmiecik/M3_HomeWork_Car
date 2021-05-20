@@ -1,8 +1,8 @@
-package pl.kmiecik.M3_HomeWork_Cars.Car.Infrastructure;
+package pl.kmiecik.M3_HomeWork_Cars.car.infrastructure;
 
 import org.springframework.stereotype.Repository;
-import pl.kmiecik.M3_HomeWork_Cars.Car.Domain.Car;
-import pl.kmiecik.M3_HomeWork_Cars.Car.Domain.CarRepository;
+import pl.kmiecik.M3_HomeWork_Cars.car.domain.Car;
+import pl.kmiecik.M3_HomeWork_Cars.car.domain.CarRepository;
 
 import java.util.*;
 

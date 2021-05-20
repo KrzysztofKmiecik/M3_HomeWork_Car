@@ -1,4 +1,4 @@
-package pl.kmiecik.M3_HomeWork_Cars.Car.Domain;
+package pl.kmiecik.M3_HomeWork_Cars.car.domain;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

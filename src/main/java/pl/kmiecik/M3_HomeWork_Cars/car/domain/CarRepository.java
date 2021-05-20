@@ -1,4 +1,4 @@
-package pl.kmiecik.M3_HomeWork_Cars.Car.Domain;
+package pl.kmiecik.M3_HomeWork_Cars.car.domain;
 
 import java.util.List;
 import java.util.Optional;

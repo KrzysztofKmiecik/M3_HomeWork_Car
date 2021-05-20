@@ -1,10 +1,10 @@
-package pl.kmiecik.M3_HomeWork_Cars.Car.Application.port;
+package pl.kmiecik.M3_HomeWork_Cars.car.application.port;
 
 import lombok.AllArgsConstructor;
 import lombok.Value;
-import pl.kmiecik.M3_HomeWork_Cars.Car.Domain.Car;
-import pl.kmiecik.M3_HomeWork_Cars.Car.Domain.CarColor;
-import pl.kmiecik.M3_HomeWork_Cars.Car.Domain.CarMark;
+import pl.kmiecik.M3_HomeWork_Cars.car.domain.Car;
+import pl.kmiecik.M3_HomeWork_Cars.car.domain.CarColor;
+import pl.kmiecik.M3_HomeWork_Cars.car.domain.CarMark;
 
 import java.util.Collections;
 import java.util.List;

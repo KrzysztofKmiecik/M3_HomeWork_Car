@@ -1,4 +1,4 @@
-package pl.kmiecik.M3_HomeWork_Cars.Car.Web;
+package pl.kmiecik.M3_HomeWork_Cars.car.web;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

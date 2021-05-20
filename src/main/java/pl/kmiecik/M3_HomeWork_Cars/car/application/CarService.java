@@ -1,11 +1,11 @@
-package pl.kmiecik.M3_HomeWork_Cars.Car.Application;
+package pl.kmiecik.M3_HomeWork_Cars.car.application;
 
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
-import pl.kmiecik.M3_HomeWork_Cars.Car.Application.port.CarUseCase;
-import pl.kmiecik.M3_HomeWork_Cars.Car.Domain.Car;
-import pl.kmiecik.M3_HomeWork_Cars.Car.Domain.CarColor;
-import pl.kmiecik.M3_HomeWork_Cars.Car.Domain.CarRepository;
+import pl.kmiecik.M3_HomeWork_Cars.car.application.port.CarUseCase;
+import pl.kmiecik.M3_HomeWork_Cars.car.domain.Car;
+import pl.kmiecik.M3_HomeWork_Cars.car.domain.CarColor;
+import pl.kmiecik.M3_HomeWork_Cars.car.domain.CarRepository;
 
 import java.util.Collections;
 import java.util.List;

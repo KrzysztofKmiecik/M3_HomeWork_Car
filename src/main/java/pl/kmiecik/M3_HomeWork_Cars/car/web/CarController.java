@@ -1,4 +1,4 @@
-package pl.kmiecik.M3_HomeWork_Cars.Car.Web;
+package pl.kmiecik.M3_HomeWork_Cars.car.web;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;
@@ -9,12 +9,12 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
-import pl.kmiecik.M3_HomeWork_Cars.Car.Application.port.CarUseCase;
-import pl.kmiecik.M3_HomeWork_Cars.Car.Application.port.CarUseCase.CreateCarCommand;
-import pl.kmiecik.M3_HomeWork_Cars.Car.Application.port.CarUseCase.UpdateCarResponse;
-import pl.kmiecik.M3_HomeWork_Cars.Car.Domain.Car;
-import pl.kmiecik.M3_HomeWork_Cars.Car.Domain.CarColor;
-import pl.kmiecik.M3_HomeWork_Cars.Car.Domain.CarMark;
+import pl.kmiecik.M3_HomeWork_Cars.car.application.port.CarUseCase;
+import pl.kmiecik.M3_HomeWork_Cars.car.application.port.CarUseCase.CreateCarCommand;
+import pl.kmiecik.M3_HomeWork_Cars.car.application.port.CarUseCase.UpdateCarResponse;
+import pl.kmiecik.M3_HomeWork_Cars.car.domain.Car;
+import pl.kmiecik.M3_HomeWork_Cars.car.domain.CarColor;
+import pl.kmiecik.M3_HomeWork_Cars.car.domain.CarMark;
 
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
