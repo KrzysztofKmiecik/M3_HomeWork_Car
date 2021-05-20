@@ -31,25 +31,44 @@ class CarController {
 
     private final CarUseCase service;
 
-    @GetMapping(produces = {
-            MediaType.APPLICATION_JSON_VALUE,
-            MediaType.APPLICATION_XML_VALUE})
+    @GetMapping(consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(HttpStatus.OK)
-    public List<Car> getAll(@RequestParam Optional<CarColor> color) {
+    public List<Car> getAllJSON(@RequestParam Optional<CarColor> color) {
         if (color.isPresent()) {
             return service.findCarByColor(color.get());
         }
         return service.findAllCars();
     }
 
-    @GetMapping(value = "/{id}", produces = {
-            MediaType.APPLICATION_JSON_VALUE,
-            MediaType.APPLICATION_XML_VALUE})
-    public ResponseEntity<Car> getCarById(@PathVariable Long id) {
+    @GetMapping(consumes = MediaType.APPLICATION_XML_VALUE,
+            produces = MediaType.APPLICATION_XML_VALUE)
+    @ResponseStatus(HttpStatus.OK)
+    public List<Car> getAllXML(@RequestParam Optional<CarColor> color) {
+        if (color.isPresent()) {
+            return service.findCarByColor(color.get());
+        }
+        return service.findAllCars();
+    }
+
+    @GetMapping(value = "/{id}",
+            consumes = MediaType.APPLICATION_JSON_VALUE,
+            produces = MediaType.APPLICATION_JSON_VALUE)
+    public ResponseEntity<Car> getCarByIdJSON(@PathVariable Long id) {
         return service.findCarById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+
+    @GetMapping(value = "/{id}",
+            consumes = MediaType.APPLICATION_XML_VALUE,
+            produces = MediaType.APPLICATION_XML_VALUE)
+    public ResponseEntity<Car> getCarByIdXML(@PathVariable Long id) {
+        return service.findCarById(id)
+                .map(ResponseEntity::ok)
+                .orElse(ResponseEntity.notFound().build());
+    }
+
 
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
