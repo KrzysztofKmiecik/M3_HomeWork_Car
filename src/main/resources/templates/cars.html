@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{spring.application.name}"></title>
+    <link rel="stylesheet" href="/webjars/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/webjars/font-awesome/5.11.2/css/all.min.css">
+    <link rel="stylesheet" href="/webjars/font-awesome/5.11.2/css/v4-shims.min.css">
+</head>
+<body>
+<h1>Cars</h1>
+
+
+<table class="table table-striped table-hover table-sm">
+
+    <thead>
+    <tr>
+        <th>Id</th>
+        <th>Mark</th>
+        <th>Model</th>
+        <th>Color</th>
+        <th>Edit</th>
+        <th>Delete</th>
+    </tr>
+    </thead>
+
+    <tr th:each="car:${cars}">
+        <td th:text="${car.getId()}">Id:</td>
+        <td th:text="${car.getMark()}">Mark:</td>
+        <td th:text="${car.getModel()}">Model:</td>
+        <td th:text="${car.getColor()}">Color:</td>
+        <td>
+            <form th:action="@{/edit-carButton}" th:object="${newCar}" method="post">
+                <input type="hidden" name="id" th:value="${car.getId()}">
+                <button name="action" type="submit">Edit</button>
+            </form>
+
+        </td>
+        <td>
+            <form th:action="@{/delete-car}" th:object="${newCar}" method="post">
+                <input type="hidden" name="id" th:value="${car.getId()}">
+                <button name="action" type="submit">Delete</button>
+            </form>
+        </td>
+        <br>
+
+    </tr>
+</table>
+
+<form th:action="@{/add-carButton}"  method="post">
+    <button name="action" type="submit">Add Car</button>
+</form>
+
+
+<script src="/webjars/jquery/3.0.0/jquery.min.js"></script>
+<script src="/webjars/popper.js/1.14.3/popper.min.js"></script>
+<script src="/webjars/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>

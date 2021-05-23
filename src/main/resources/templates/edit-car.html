@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>AddCar</title>
+</head>
+<body>
+<form th:action="@{/edit-car}" th:object="${newCar}" method="post">
+    <label for="id" th:text="${car.getId()}">id</label>
+    <input id="id" type="text" th:field="*{id}">
+
+    <label for="mark" th:text="${car.getMark()}">mark</label>
+    <input id="mark" type="text" th:value="${car.getMark()}" th:field="*{mark}">
+
+    <label for="model" th:text="${car.getModel()}">model</label>
+    <input id="model" type="text" th:value="${car.getModel()}" th:field="*{model}">
+
+    <label for="color" th:text="${car.getColor()}">color</label>
+    <input id="color" type="text" th:value="${car.getColor()}" th:field="*{color}">
+
+    <p><input type="submit" value="Edit car"></p>
+</form>
+
+</body>
+</html>
