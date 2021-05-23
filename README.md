@@ -28,9 +28,9 @@ Napisz REST API dla listy pojazdów.
 #M4_HomeWork_Thymeleaf
 Rozbuduj swoją aplikacje z poprzedniego tygodnia o interfejs graficzny, który umożliwi:
 
-- [ ] wyświetlanie wszystkich pozycji
+- [x] wyświetlanie wszystkich pozycji
 - [ ] pobieranie elementu po jego id
-- [ ] dodawanie pozycji
-- [ ] modyfikowanie pozycji
+- [x] dodawanie pozycji
+- [x] modyfikowanie pozycji
 - [ ] modyfikowanie jednego z pól pozycji
-- [ ] usuwania jednej pozycji
+- [x] usuwania jednej pozycji
