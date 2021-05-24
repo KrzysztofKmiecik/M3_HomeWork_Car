@@ -16,6 +16,7 @@ import pl.kmiecik.M3_HomeWork_Cars.car.domain.Car;
 import pl.kmiecik.M3_HomeWork_Cars.car.domain.CarColor;
 import pl.kmiecik.M3_HomeWork_Cars.car.domain.CarMark;
 
+import javax.validation.Valid;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -27,6 +28,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/cars")
 @AllArgsConstructor
+@Validated
 class CarRestController {
 
     private final CarUseCase service;
@@ -54,7 +56,7 @@ class CarRestController {
     @GetMapping(value = "/{id}",
             consumes = MediaType.APPLICATION_JSON_VALUE,
             produces = MediaType.APPLICATION_JSON_VALUE)
-    public ResponseEntity<Car> getCarByIdJSON(@PathVariable Long id) {
+    public ResponseEntity<Car> getCarByIdJSON(@PathVariable @NotNull @Min(0) Long id) {
         return service.findCarById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -63,7 +65,7 @@ class CarRestController {
     @GetMapping(value = "/{id}",
             consumes = MediaType.APPLICATION_XML_VALUE,
             produces = MediaType.APPLICATION_XML_VALUE)
-    public ResponseEntity<Car> getCarByIdXML(@PathVariable Long id) {
+    public ResponseEntity<Car> getCarByIdXML(@PathVariable @NotNull @Min(0) Long id) {
         return service.findCarById(id)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
@@ -84,7 +86,7 @@ class CarRestController {
 
 
     @PutMapping("/{id}")
-    public void updateCar(@PathVariable Long id, @Validated @RequestBody RestCarCommand command) {
+    public void updateCar(@PathVariable Long id, @Valid @RequestBody RestCarCommand command) {
         UpdateCarResponse response = service.updateCar(command.toUpdateComand(id));
         if (!response.isSuccess()) {
             String message = String.join(", ", response.getErrors());
@@ -105,7 +107,7 @@ class CarRestController {
 
     @DeleteMapping("/{id}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
-    public void removeCar(@PathVariable Long id) {
+    public void removeCar(@PathVariable @NotNull @Min(0) Long id) {
         service.removeById(id);
     }
 
@@ -114,6 +116,7 @@ class CarRestController {
     private static class RestCarCommand {
 
         @Min(value = 0, message = "Id should be greater than 0 ")
+        @NotNull
         private Long id;
         @NotNull
         private CarMark mark;

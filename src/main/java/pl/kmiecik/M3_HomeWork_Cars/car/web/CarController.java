@@ -1,13 +1,23 @@
 package pl.kmiecik.M3_HomeWork_Cars.car.web;
 
 import lombok.AllArgsConstructor;
+import lombok.Data;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import pl.kmiecik.M3_HomeWork_Cars.car.application.port.CarUseCase;
+import pl.kmiecik.M3_HomeWork_Cars.car.application.port.CarUseCase.CreateCarCommand;
 import pl.kmiecik.M3_HomeWork_Cars.car.domain.Car;
+import pl.kmiecik.M3_HomeWork_Cars.car.domain.CarColor;
+import pl.kmiecik.M3_HomeWork_Cars.car.domain.CarMark;
 
+import javax.validation.Valid;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.List;
 import java.util.Optional;
 
@@ -15,6 +25,7 @@ import java.util.Optional;
 @CrossOrigin
 @AllArgsConstructor
 @Slf4j
+@Validated
 class CarController {
     private final CarUseCase service;
 
@@ -43,14 +54,14 @@ class CarController {
 
 
     @PostMapping("/add-car")
-    public String addCar(@ModelAttribute Car car) {
+    public String addCar(@ModelAttribute @Valid CarControllerCommand command) {
         log.debug("addCar method");
-        service.addCar(new CarUseCase.CreateCarCommand(car.getId(), car.getMark(), car.getModel(), car.getColor()));
+        service.addCar(command.toCreateommand());
         return "redirect:/cars";
     }
 
     @PostMapping("/delete-car")
-    public String deleteCar(@RequestParam String id) {
+    public String deleteCar(@RequestParam  @NotBlank @Min(0) String id) {
         log.debug("deleteCar method");
         if (id != null) {
             service.removeById(Long.valueOf(id));
@@ -59,7 +70,7 @@ class CarController {
     }
 
     @GetMapping("/edit-car")
-    public String getEditedCar(Model model, @RequestParam String id) {
+    public String getEditedCar(Model model, @RequestParam @NotBlank @Min(0) String id) {
         log.debug("geteditedCar method");
         Optional<Car> carById = service.findCarById(Long.valueOf(id));
         Car myCar = carById.isPresent() ? carById.get() : new Car();
@@ -70,15 +81,36 @@ class CarController {
     }
 
     @PostMapping("/edit-car")
-    public String postEditedCar(@ModelAttribute Car car) {
+    public String postEditedCar(@ModelAttribute CarControllerCommand command) {
         log.debug("postEditedCar method");
-        service.updateCar(new CarUseCase.CreateCarCommand(car.getId(), car.getMark(), car.getModel(), car.getColor()));
+        service.updateCar(command.toCreateommand());
         return "redirect:/cars";
     }
 
     @PostMapping("/edit-carButton")
-    public String postEditCarButton(@RequestParam String id) {
+    public String postEditCarButton(@RequestParam  @NotBlank @Min(0) String id) {
         log.debug("postEditCarButton method");
         return "redirect:edit-car?id=" + id;
     }
+
+    @Data
+    private static class CarControllerCommand {
+
+        @Min(value = 0, message = "Id should be greater than 0 ")
+        @NotNull
+        private Long id;
+        @NotNull
+        private CarMark mark;
+        @NotBlank
+        @Size(min = 1)
+        private String model;
+        @NotNull
+        private CarColor color;
+
+        CreateCarCommand toCreateommand() {
+            return new CreateCarCommand(id, mark, model, color);
+        }
+
+    }
+
 }
