@@ -1,6 +1,7 @@
 package pl.kmiecik.M3_HomeWork_Cars.car.web;
 
 import lombok.AllArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -13,11 +14,13 @@ import java.util.Optional;
 @Controller
 @CrossOrigin
 @AllArgsConstructor
-public class CarController {
+@Slf4j
+class CarController {
     private final CarUseCase service;
 
     @GetMapping("/cars")
     public String getAllCars(Model model) {
+        log.debug("getAllCars method");
         List<Car> allCars = service.findAllCars();
         model.addAttribute("cars", allCars);
         model.addAttribute("newCar", new Car());
@@ -26,12 +29,14 @@ public class CarController {
 
     @PostMapping("/add-carButton")
     public String addCarButton() {
-        return "redirect:add-car";
+        log.debug("addCarButton method");
+        return "redirect:/add-car";
     }
 
 
     @GetMapping("/add-car")
     public String getNewCar(Model model) {
+        log.debug("getNewCar method");
         model.addAttribute("newCar", new Car());
         return "add-car";
     }
@@ -39,36 +44,41 @@ public class CarController {
 
     @PostMapping("/add-car")
     public String addCar(@ModelAttribute Car car) {
+        log.debug("addCar method");
         service.addCar(new CarUseCase.CreateCarCommand(car.getId(), car.getMark(), car.getModel(), car.getColor()));
         return "redirect:/cars";
     }
 
     @PostMapping("/delete-car")
-    public String deleteCar(@RequestParam String id){
-        if (id!=null) {
+    public String deleteCar(@RequestParam String id) {
+        log.debug("deleteCar method");
+        if (id != null) {
             service.removeById(Long.valueOf(id));
         }
-        return"redirect:/cars";
+        return "redirect:/cars";
     }
 
     @GetMapping("/edit-car")
-    public String getEditedCar(Model model,@RequestParam String id) {
-
+    public String getEditedCar(Model model, @RequestParam String id) {
+        log.debug("geteditedCar method");
         Optional<Car> carById = service.findCarById(Long.valueOf(id));
         Car myCar = carById.isPresent() ? carById.get() : new Car();
 
         model.addAttribute("newCar", new Car());
-        model.addAttribute("car",myCar);
+        model.addAttribute("car", myCar);
         return "edit-car";
     }
+
     @PostMapping("/edit-car")
     public String postEditedCar(@ModelAttribute Car car) {
+        log.debug("postEditedCar method");
         service.updateCar(new CarUseCase.CreateCarCommand(car.getId(), car.getMark(), car.getModel(), car.getColor()));
         return "redirect:/cars";
     }
 
     @PostMapping("/edit-carButton")
-    public String editCarButton(@RequestParam String id) {
-        return "redirect:edit-car?id="+id;
+    public String postEditCarButton(@RequestParam String id) {
+        log.debug("postEditCarButton method");
+        return "redirect:edit-car?id=" + id;
     }
 }

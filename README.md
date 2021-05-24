@@ -29,8 +29,10 @@ Napisz REST API dla listy pojazdów.
 Rozbuduj swoją aplikacje z poprzedniego tygodnia o interfejs graficzny, który umożliwi:
 
 - [x] wyświetlanie wszystkich pozycji
-- [ ] pobieranie elementu po jego id
+- [x] pobieranie elementu po jego id
 - [x] dodawanie pozycji
 - [x] modyfikowanie pozycji
-- [ ] modyfikowanie jednego z pól pozycji
+- [x] modyfikowanie jednego z pól pozycji
 - [x] usuwania jednej pozycji
+
+![img_1.png](src/main/resources/static/img_1.png)
