@@ -25,7 +25,7 @@ Napisz REST API dla listy pojazdów.
 ## Dodatkowo
 - [x] walidacja danych wejściowych
 
-#M4_HomeWork_Thymeleaf
+# M4_HomeWork_Thymeleaf
 Rozbuduj swoją aplikacje z poprzedniego tygodnia o interfejs graficzny, który umożliwi:
 
 - [x] wyświetlanie wszystkich pozycji
