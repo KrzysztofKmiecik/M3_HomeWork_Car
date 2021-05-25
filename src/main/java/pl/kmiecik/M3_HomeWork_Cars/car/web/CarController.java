@@ -54,7 +54,7 @@ class CarController {
 
 
     @PostMapping("/add-car")
-    public String addCar(@ModelAttribute @Valid CarControllerCommand command) {
+    public String addCar(@Valid @ModelAttribute  CarControllerCommand command) {
         log.debug("addCar method");
         service.addCar(command.toCreateommand());
         return "redirect:/cars";
@@ -81,7 +81,7 @@ class CarController {
     }
 
     @PostMapping("/edit-car")
-    public String postEditedCar(@ModelAttribute CarControllerCommand command) {
+    public String postEditedCar(@Valid @ModelAttribute CarControllerCommand command) {
         log.debug("postEditedCar method");
         service.updateCar(command.toCreateommand());
         return "redirect:/cars";

@@ -13,7 +13,7 @@ import java.util.Map;
 import java.util.stream.Collectors;
 
 @ControllerAdvice
-public class CustomGlobalExceptionHandler {
+class CustomGlobalExceptionHandler {
 
     @ExceptionHandler(BindException.class)
     public ResponseEntity<Object> RestHandleException(BindException ex) {
